@@ -1,0 +1,13 @@
+{
+    "Pizza": {
+        "Pepperoni": 500,
+        "Margarita": 400,
+        "Four chesee": 600,
+        "Calcone": 700
+    },
+    "Drinks": {
+        "Pivo": 150,
+        "Vino": 200,
+        "Vodka": 300
+    }
+}
