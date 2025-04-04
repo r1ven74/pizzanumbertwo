@@ -18,7 +18,6 @@ def register_user_view():
     logging.info(f"Пользователь указал данные для регистрации: {name}, {birth_year}")
     return name, password, birth_year
 
-
 def pizza_selection_view(menu):
     orders = {}
     while True:
