@@ -4,7 +4,7 @@ import logging
 import os
 
 def get_db_connection():
-    conn = sqlite3.connect('C:/Users/Student/Desktop/pizzaAI71/dataa.db')
+    conn = sqlite3.connect('dataa.db')
     conn.row_factory = sqlite3.Row
     return conn
 
