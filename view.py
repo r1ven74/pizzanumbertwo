@@ -1,6 +1,7 @@
 from model import *
 import logging
 
+
 def display_message(message):
     print(message)
 
@@ -19,6 +20,8 @@ def register_user_view():
     return name, password, birth_year
 
 def pizza_selection_view(menu):
+    conn = get_db_connection()
+    cursor = conn.cursor()
     orders = {}
     while True:
         for index, item in enumerate(menu, start=1):
@@ -27,6 +30,7 @@ def pizza_selection_view(menu):
         choice = input("Выберите пункт (или введите 'готово' для завершения заказа): ")
         if choice.lower() == 'готово':
             break
+
 
         if choice.isdigit() and 1 <= int(choice) <= len(menu):
             item = menu[int(choice) - 1]
@@ -40,6 +44,11 @@ def pizza_selection_view(menu):
         else:
             print("Неверный выбор, попробуйте еще раз.")
             logging.warning(f"Пользователь ввел неверный выбор: {choice}")
+        if item == "Pepperoni":
+            for i in range(1, 5):
+                cursor.execute('UPDATE blackbigstorage SET quantity= quantity - ? WHERE id=?', (1, i))
+            conn.commit()
+            cursor.close()
 
     return orders
 
