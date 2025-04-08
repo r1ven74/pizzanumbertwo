@@ -55,6 +55,10 @@ def pizza_selection_view(menu):
             for i in range(4):
                 cursor.execute('UPDATE blackbigstorage SET quantity= quantity - ? WHERE id=?', (1 * quantity, 4))
             cursor.execute('UPDATE blackbigstorage SET quantity= quantity - ? WHERE id=?', (1 * quantity, 1))
+        elif item == "Calzone":
+            cursor.execute('UPDATE blackbigstorage SET quantity= quantity - ? WHERE id=?', (1 * quantity, 6))
+            cursor.execute('UPDATE blackbigstorage SET quantity= quantity - ? WHERE id=?', (1 * quantity, 2))
+            cursor.execute('UPDATE blackbigstorage SET quantity= quantity - ? WHERE id=?', (1 * quantity, 1))
         conn.commit()
         cursor.close()
 
