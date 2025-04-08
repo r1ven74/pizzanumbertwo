@@ -46,9 +46,17 @@ def pizza_selection_view(menu):
             logging.warning(f"Пользователь ввел неверный выбор: {choice}")
         if item == "Pepperoni":
             for i in range(1, 5):
-                cursor.execute('UPDATE blackbigstorage SET quantity= quantity - ? WHERE id=?', (1, i))
-            conn.commit()
-            cursor.close()
+                cursor.execute('UPDATE blackbigstorage SET quantity= quantity - ? WHERE id=?', (1 * quantity, i))
+        elif item == "Margarita":
+            for i in range(3, 8):
+                cursor.execute('UPDATE blackbigstorage SET quantity= quantity - ? WHERE id=?', (1 * quantity, i))
+            cursor.execute('UPDATE blackbigstorage SET quantity= quantity - ? WHERE id=?', (1 * quantity, 1))
+        elif item == "Four cheese":
+            for i in range(4):
+                cursor.execute('UPDATE blackbigstorage SET quantity= quantity - ? WHERE id=?', (1 * quantity, 4))
+            cursor.execute('UPDATE blackbigstorage SET quantity= quantity - ? WHERE id=?', (1 * quantity, 1))
+        conn.commit()
+        cursor.close()
 
     return orders
 
